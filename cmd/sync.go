@@ -132,6 +132,7 @@ to quickly create a Cobra application.`,
 				}
 
 				policyJSON, _ := bucketPolicyizer.CompilePolicy(updateSourcePolicy(sourceBucketName, policy))
+				log.Printf(policyJSON)
 				params := &s3.PutBucketPolicyInput{
 					Bucket: aws.String(sourceBucketName),
 					Policy: aws.String(policyJSON),
