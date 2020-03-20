@@ -205,7 +205,7 @@ func createSourcePolicy(sourceBucketName string) bucketPolicyizer.Policy {
 		Sid:    "DelegateS3AccessForMigration",
 		Effect: "Allow",
 		Principal: bucketPolicyizer.Principal{
-			AWS: []string{fmt.Sprintf("arn:aws:iam::%s:user/%s", viper.GetString("destination.account_number"), viper.GetString("destination.aws_user"))},
+			AWS: []string{fmt.Sprintf("arn:aws:iam::%s:root", viper.GetString("destination.account_number"))},
 		},
 		Action: bucketPolicyizer.Action{"s3:*"},
 		Resource: bucketPolicyizer.Resource{
