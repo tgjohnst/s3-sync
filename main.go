@@ -13,7 +13,7 @@
 
 package main
 
-import "github.com/checkr/s3-sync/cmd"
+import "github.com/tgjohnst/s3-sync/cmd"
 
 func main() {
 	cmd.Execute()
