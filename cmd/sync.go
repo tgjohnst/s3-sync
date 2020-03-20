@@ -70,27 +70,27 @@ to quickly create a Cobra application.`,
 		))
 
 		// Update destination user policy
-		svc := iam.New(destinationSess)
-
-		destinationUserPolicy, err := bucketPolicyizer.CompilePolicy(createDestinationUserPolicy())
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		params := &iam.PutUserPolicyInput{
-			PolicyDocument: aws.String(destinationUserPolicy),
-			PolicyName:     aws.String("DelegateS3AccessForMigration"),
-			UserName:       aws.String(viper.GetString("destination.aws_user")),
-		}
-
-		log.Printf("Creating user(%s) policy", viper.GetString("destination.aws_user"))
-		_, err = svc.PutUserPolicy(params)
-		if err != nil {
-			// Print the error, cast err to awserr.Error to get the Code and
-			// Message from an error.
-			fmt.Println(err.Error())
-			return
-		}
+//		svc := iam.New(destinationSess)
+//
+//		destinationUserPolicy, err := bucketPolicyizer.CompilePolicy(createDestinationUserPolicy())
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//
+//		params := &iam.PutUserPolicyInput{
+//			PolicyDocument: aws.String(destinationUserPolicy),
+//			PolicyName:     aws.String("DelegateS3AccessForMigration"),
+//			UserName:       aws.String(viper.GetString("destination.aws_user")),
+//		}
+//
+//		log.Printf("Creating user(%s) policy", viper.GetString("destination.aws_user"))
+//		_, err = svc.PutUserPolicy(params)
+//		if err != nil {
+//			// Print the error, cast err to awserr.Error to get the Code and
+//			// Message from an error.
+//			fmt.Println(err.Error())
+//			return
+//		}
 
 		// Create buckets and policies
 		for sourceBucketName, destinationBucketName := range viper.GetStringMapString("buckets") {
